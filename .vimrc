@@ -75,6 +75,9 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 
+" Deletes the buffer of the tabline list when it's closed
+autocmd BufDelete * call airline#extensions#tabline#buflist#invalidate()
+
 " CtrlP configuration
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " Linux/MacOSX
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
@@ -84,3 +87,13 @@ map <up> <nop>
 map <down> <nop>
 map <left> <nop>
 map <right> <nop>
+
+" Move through splits fast.
+nmap <C-h> <C-w>h
+nmap <C-j> <C-w>j
+nmap <C-k> <C-w>k
+nmap <C-l> <C-w>l
+
+" Cycle through buffers easy.
+nmap <C-Tab> :bnext<CR>
+nmap <C-S-Tab> :bprevious<CR>
